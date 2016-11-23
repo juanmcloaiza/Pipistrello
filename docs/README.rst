@@ -1,14 +1,14 @@
 .. _readme:
 
-$Pipistrello
+$project
 ========
 
-$Pipistrello will solve your problem of where to start with documentation,
+$project will solve your problem of where to start with documentation,
 by providing a basic explanation of how to do it easily.
 
 Look how easy it is to use:
 
-    import Pipistrello
+    import project
     # Get your stuff done
     pipistrello.do_stuff()
 
@@ -21,23 +21,23 @@ Features
 Installation
 ------------
 
-Install $Pipistrello by running:
+Install $project by running:
 
-    install Pipistrello
+    install project
 
 Contribute
 ----------
 
-- Issue Tracker: github.com/$Pipistrello/$Pipistrello/issues
-- Source Code: github.com/$Pipistrello/$Pipistrello
+- Issue Tracker: github.com/$project/$project/issues
+- Source Code: github.com/$project/$project
 
 Support
 -------
 
 If you are having issues, please let us know.
-We have a mailing list located at: Pipistrello@google-groups.com
+We have a mailing list located at: project@google-groups.com
 
 License
 -------
 
-The Pipistrello is licensed under the BSD license.
+The project is licensed under the BSD license.
