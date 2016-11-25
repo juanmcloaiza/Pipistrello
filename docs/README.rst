@@ -36,11 +36,13 @@ For **Pipistrello** to do your map-reduce job, both *your_mapper_script* and *yo
 that take as an argument two and one  strings respectively, i.e., running them locally from the command line should look like:
 
 	$ *your_mapper_script* *m_arg1* *m_arg2*
+	
 	$ *map_result_filename*
 
 and
 
 	$ *your_reducer_script* *r_arg1*
+	
 	$ *reduce_result_filename*
 
 In the logic of Pipistrello, *m_arg1* will represent an hdfs fiename (extracted from your *input* paths, just a name) 
