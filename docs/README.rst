@@ -14,22 +14,22 @@ Launching it is pretty simple, provided that a hadoop cluster is already properl
 mounted and files stored in HDFS using only **one block per file**:
 
 	$HADOOP_HOME/bin/hadoop jar Pipistrello.jar \
-	-${generic_hadoop_mapreduce_options} \
-	-files *file1,file2,file3*... \
-	-input *input1,input2,input3*... \
-	-output *output_hdfs_dir* \
-	-mapper *your_mapper_script* \
-	-reducer *your_reducer_script*
+	  -${generic_hadoop_mapreduce_options} \
+	  -files *file1,file2,file3*... \
+	  -input *input1,input2,input3*... \
+	  -output *output_hdfs_dir* \
+	  -mapper *your_mapper_script* \
+	  -reducer *your_reducer_script*
 
 Compare to hadoop-streaming:
 
 	$HADOOP_HOME/bin/hadoop jar hadoop-streaming.jar \
-	-${generic_hadoop_mapreduce_options} \
-	-files *file1,file2,file3*... \
-	-input *input1,input2,input3*... \
-	-output *output_hdfs_dir* \
-	-mapper *your_mapper_script* \
-	-reducer *your_reducer_script*
+	  -${generic_hadoop_mapreduce_options} \
+	  -files *file1,file2,file3*... \
+	  -input *input1,input2,input3*... \
+	  -output *output_hdfs_dir* \
+	  -mapper *your_mapper_script* \
+	  -reducer *your_reducer_script*
 
 
 For **Pipistrello** to do your map-reduce job, both *your_mapper_script* and *your_reducer_script* must be executables 
