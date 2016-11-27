@@ -34,7 +34,7 @@ Compare to hadoop-streaming:
 ::
 
 
-For **Pipistrello** to do its job, both *your_mapper_script* and *your_reducer_script* must be executables 
+For **Pipistrello** to do its job, both ``your_mapper_script`` and ``your_reducer_script`` must be executables 
 that take as arguments two and one  strings respectively, i.e., running them locally from the command line should look like:
 
 ::
@@ -53,14 +53,18 @@ and
 	
 ::
 
-In the logic of Pipistrello, *m_arg1* will represent an hdfs fiename (extracted from your *input* paths, just a name) 
-and *m_arg2* will be an actual local file path on which *your_mapper_script* will operate (you don't know it, but you have to
-make your script be ready for receiving it and acting on it, as this represents the path to your data). As a result of the
-mapping process, *your_mapper_script* should 1) write a file of any kind to the current working directory, and 2) write a
-string to stdout with its filename (*map_result_filename* above).
+In the logic of Pipistrello, 
 
-*your_reducer_script* should instead be ready to read lines from a file *r_arg1*. These lines will be no other thing
-than each of the *map_result_filename* emmited by the mappers. Once *your_reducer_script* knows all of these filenames, it
-will be able to combine them and produce 1) a single file of any kind saved to the current working directory and 2) a string
-*reduce_result_filename* written to stdout. After it has finished running, if the job was successful, you should be able to get
-the results (both map and reduce results are kept) in the directory you designed as output ``${hdfs_output_dir}``
+* ``m_arg1`` will represent an hdfs fiename (extracted from the paths after the ``-input`` flag, they are treated just as a dummy name by the script. You may want to use these dummy names to give a name to your mapper output).
+
+* ``m_arg2`` will be an actual local file path on which ``your_mapper_script`` will operate (the stored block in the local filesystem where the mapper is running (known bug here: block filenames don't have extensions!). 
+
+* As a result of themapping process, ``your_mapper_script`` should 1) write a file of any kind to the current working directory,  and 2) write a string to stdout with its filename (``map_result_filename`` above).
+
+
+* ``your_reducer_script`` should instead be ready to read lines of text from a file ``r_arg1``. These lines will be no other thing than each of the ``map_result_filename`` emmited by the mappers.
+
+*Once ``your_reducer_script`` knows all of these filenames, it will be able to combine them and produce 1) a single file of any kind saved to the current working directory and 2) a string ``reduce_result_filename`` written to stdout. 
+
+After Pipistrello has finished running, if the job was successful, you should be able to see
+the results (both map and reduce results are kept) in the directory you designed as output, ``hdfs_output_dir``.
