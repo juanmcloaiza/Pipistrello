@@ -11,11 +11,11 @@ mounted and files stored in HDFS using only **one block per file**:
 
 	$ $HADOOP_HOME/bin/hadoop jar Pipistrello.jar \
 	  -${generic_hadoop_mapreduce_options} \
-	  -files *file1,file2,file3*... \
-	  -input *input1,input2,input3*... \
-	  -output *output_hdfs_dir* \
-	  -mapper *your_mapper_script* \
-	  -reducer *your_reducer_script*
+	  -files file1,file2,file3... \
+	  -input input1,input2,input3... \
+	  -output output_hdfs_dir \
+	  -mapper your_mapper_script \
+	  -reducer your_reducer_script
 	
 ::
 
@@ -25,17 +25,17 @@ Compare to hadoop-streaming:
 
 	$ $HADOOP_HOME/bin/hadoop jar hadoop-streaming.jar \
 	  -${generic_hadoop_mapreduce_options} \
-	  -files *file1,file2,file3*... \
-	  -input *input1,input2,input3*... \
-	  -output *output_hdfs_dir* \
-	  -mapper *your_mapper_script* \
-	  -reducer *your_reducer_script*
+	  -files your_mapper_scrit,your_reducer_script,file1,file2,file3... \
+	  -input input1,input2,input3... \
+	  -output output_hdfs_dir \
+	  -mapper your_mapper_script \
+	  -reducer your_reducer_script
 	  
 ::
 
 
-For **Pipistrello** to do your map-reduce job, both *your_mapper_script* and *your_reducer_script* must be executables 
-that take as an argument two and one  strings respectively, i.e., running them locally from the command line should look like:
+For **Pipistrello** to do its job, both *your_mapper_script* and *your_reducer_script* must be executables 
+that take as arguments two and one  strings respectively, i.e., running them locally from the command line should look like:
 
 ::
 
@@ -61,7 +61,6 @@ string to stdout with its filename (*map_result_filename* above).
 
 *your_reducer_script* should instead be ready to read lines from a file *r_arg1*. These lines will be no other thing
 than each of the *map_result_filename* emmited by the mappers. Once *your_reducer_script* knows all of these filenames, it
-will be able to combine them and produce 1) a single file of any kind saved to the current working directory and 2) a string *reduce_result_filename* written to stdout.
-
-
-
+will be able to combine them and produce 1) a single file of any kind saved to the current working directory and 2) a string
+*reduce_result_filename* written to stdout. After it has finished running, if the job was successful, you should be able to get
+the results (both map and reduce results are kept) in the directory you designed as output ``${hdfs_output_dir}``
