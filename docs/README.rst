@@ -64,7 +64,7 @@ In the logic of Pipistrello,
 
 * ``your_reducer_script`` should instead be ready to read lines of text from a file ``r_arg1``. These lines will be no other thing than each of the ``map_result_filename`` emmited by the mappers.
 
-*Once ``your_reducer_script`` knows all of these filenames, it will be able to combine them and produce 1) a single file of any kind saved to the current working directory and 2) a string ``reduce_result_filename`` written to stdout. 
+* Once ``your_reducer_script`` knows all of these filenames, it will be able to combine them and produce 1) a single file of any kind saved to the current working directory and 2) a string ``reduce_result_filename`` written to stdout. 
 
 After Pipistrello has finished running, if the job was successful, you should be able to see
 the results (both map and reduce results are kept) in the directory you designed as output, ``hdfs_output_dir``.
