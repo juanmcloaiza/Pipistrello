@@ -1,14 +1,8 @@
 .. _readme:
 
-Pipistrello
-===========
+Using Pipistrello
+=================
 
-	
-Pipistrello is a utility that allows you to create and run Map/Reduce jobs with 
-(almost) any executable or script as the mapper and/or the reducer in pretty much 
-the same way as hadoop-streaming. The fundamental difference is that Pipistrello
-is specially designed to operate on binary files 
-(NetCDF, jpg, png, mp3... you name it!).
 
 Launching it is pretty simple, provided that a hadoop cluster is already properly 
 mounted and files stored in HDFS using only **one block per file**:
