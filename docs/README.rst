@@ -4,40 +4,54 @@ Using Pipistrello
 =================
 
 
-Launching it is pretty simple, provided that a hadoop cluster is already properly 
+Launching a Pipistrello job is pretty simple, provided that a hadoop cluster is already properly 
 mounted and files stored in HDFS using only **one block per file**:
 
-	$HADOOP_HOME/bin/hadoop jar Pipistrello.jar \
+::
+
+	$ $HADOOP_HOME/bin/hadoop jar Pipistrello.jar \
 	  -${generic_hadoop_mapreduce_options} \
 	  -files *file1,file2,file3*... \
 	  -input *input1,input2,input3*... \
 	  -output *output_hdfs_dir* \
 	  -mapper *your_mapper_script* \
 	  -reducer *your_reducer_script*
+	
+::
 
 Compare to hadoop-streaming:
 
-	$HADOOP_HOME/bin/hadoop jar hadoop-streaming.jar \
+::
+
+	$ $HADOOP_HOME/bin/hadoop jar hadoop-streaming.jar \
 	  -${generic_hadoop_mapreduce_options} \
 	  -files *file1,file2,file3*... \
 	  -input *input1,input2,input3*... \
 	  -output *output_hdfs_dir* \
 	  -mapper *your_mapper_script* \
 	  -reducer *your_reducer_script*
+	  
+::
 
 
 For **Pipistrello** to do your map-reduce job, both *your_mapper_script* and *your_reducer_script* must be executables 
 that take as an argument two and one  strings respectively, i.e., running them locally from the command line should look like:
 
-	$ *your_mapper_script* *m_arg1* *m_arg2*
+::
+
+	$ your_mapper_script m_arg1 m_arg2
+	$ map_result_filename
 	
-	$ *map_result_filename*
+::
 
 and
 
-	$ *your_reducer_script* *r_arg1*
+::
+
+	$ your_reducer_script r_arg1
+	$ reduce_result_filename
 	
-	$ *reduce_result_filename*
+::
 
 In the logic of Pipistrello, *m_arg1* will represent an hdfs fiename (extracted from your *input* paths, just a name) 
 and *m_arg2* will be an actual local file path on which *your_mapper_script* will operate (you don't know it, but you have to
