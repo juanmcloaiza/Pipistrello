@@ -13,7 +13,7 @@ mounted and files stored in HDFS using only **one block per file**:
 	  -${generic_hadoop_mapreduce_options} \
 	  -files file1,file2,file3... \
 	  -input input1,input2,input3... \
-	  -output output_hdfs_dir \
+	  -output hdfs_output_dir \
 	  -mapper your_mapper_script \
 	  -reducer your_reducer_script
 	
@@ -27,7 +27,7 @@ Compare to hadoop-streaming:
 	  -${generic_hadoop_mapreduce_options} \
 	  -files your_mapper_scrit,your_reducer_script,file1,file2,file3... \
 	  -input input1,input2,input3... \
-	  -output output_hdfs_dir \
+	  -output hdfs_output_dir \
 	  -mapper your_mapper_script \
 	  -reducer your_reducer_script
 	  
